@@ -1,0 +1,18 @@
+function [val,niter] = fowardeuler(argfunc, y0, t, delt)
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+yn = [];
+yn(1) = y0;
+count = 1;
+
+for k = 1:length(t)
+    while delt*argfunc(t(k),yn(k)) > 1E-6
+        yn(k)  = yn(k) + delt*argfunc(t(k),yn(k));
+        count = count + 1;
+    end 
+    niter = count + 1;
+end 
+niter = count-1;
+val = yn;
+end
+
